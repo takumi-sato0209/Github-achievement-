@@ -1,3 +1,11 @@
-This is a test file
-This is a small change
-This is a small change
+Your list mixes verb forms ("explore" vs "exploration" vs "exploring") with nouns. Combined naively, some branches come out as awkward English:
+
+"sojourn-ascending-explorer" (noun + verb-ing + noun) — acceptable
+
+"exploration-journey-wanderer" (noun + noun + noun) — acceptable
+
+"sojourning-pilgrimage-nomad" — nonsense
+
+If the generated names are only ever used as identifiers (which they seem to be — they're for achievement branches), you don't care. They'll look like random codenames regardless.
+
+If you actually want readable English phrases, add a filter that rejects any combination where word_2 ends in -ing and word_3 is a noun — but for a bot-generated branch name this is overkill.
