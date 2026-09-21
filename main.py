@@ -9,7 +9,8 @@ import time
 TEXT_FILE_PATH = "text.txt"
 
 COAUTHOR_1 = "Co-authored-by: patriciahopatriciaos7217-eng <patriciahopatriciaos7217@gmail.com>"
-COAUTHOR_2 = "Co-authored-by: babumahir655 <yukitanaka7070@gmail.com>"
+COAUTHOR_2 = "Co-authored-by: babumahir655 <babumahir655@gmail.com>"
+
 
 COMMIT_MESSAGE = f"""
 Added a small change to {TEXT_FILE_PATH}
