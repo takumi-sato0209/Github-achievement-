@@ -8,15 +8,17 @@ import time
 
 TEXT_FILE_PATH = "text.txt"
 
-COAUTHOR_1 = "Co-authored-by: patriciahopatriciaos7217-eng <patriciahopatriciaos7217@gmail.com>"
-COAUTHOR_2 = "Co-authored-by: babumahir655 <babumahir655@gmail.com>"
+COAUTHOR_1 = "Co-authored-by: @patriciahopatriciaos7217-eng <patriciahopatriciaos7217@gmail.com>"
+COAUTHOR_2 = "Co-authored-by: @babumahir655 <babumahir655@gmail.com>"
+COAUTHOR_3 = "Co-authored-by: @n0 <luke@u.software>"
 
 COMMIT_MESSAGE = f"""
 Added a small change to {TEXT_FILE_PATH}
 
 
 {COAUTHOR_1}
-{COAUTHOR_2}"""
+{COAUTHOR_2}
+{COAUTHOR_3}"""
 
 # First Make a new branch with a meaningful name that dont looks like its a random branch
 
