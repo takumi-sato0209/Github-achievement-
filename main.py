@@ -8,27 +8,103 @@ import time
 
 TEXT_FILE_PATH = "text.txt"
 
-COAUTHOR_1 = "Co-authored-by: patriciahopatriciaos7217-eng <patriciahopatriciaos7217@gmail.com>"
-COAUTHOR_2 = "Co-authored-by: babumahir655 <yukitanaka7070@gmail.com>"
+COAUTHOR_1 = "Co-authored-by: @patriciahopatriciaos7217-eng <patriciahopatriciaos7217@gmail.com>"
+COAUTHOR_2 = "Co-authored-by: @babumahir655 <babumahir655@gmail.com>"
+COAUTHOR_3 = "Co-authored-by: @n0 <luke@u.software>"
 
 COMMIT_MESSAGE = f"""
 Added a small change to {TEXT_FILE_PATH}
 
 
 {COAUTHOR_1}
-{COAUTHOR_2}"""
+{COAUTHOR_2}
+{COAUTHOR_3}"""
 
 # First Make a new branch with a meaningful name that dont looks like its a random branch
 
 def gen_branch_name():
     # get a dictionary of words
-    word_1 = ["space", "moon", "star", "planet", "galaxy", "universe", "comet", "asteroid", "blackhole", "wormhole", "nebula", "quasar", "pulsar", "supernova", "darkmatter", "lightyear", "gravity", "orbit", "cosmos", "void", "dimension", "time", "energy", "matter", "radiation", "singularity", "eventhorizon", "spacetime", "multiverse", "paralleluniverse", "extraterrestrial", "alien", "lifeform", "intelligence", "civilization", "technology", "robotics", "artificialintelligence", "machinelearning", "neuralnetwork", "quantumcomputing"]
-    word_2 = ["exploration", "discovery", "adventure", "journey", "mission", "expedition", "voyage", "quest", "odyssey", "pilgrimage", "safari", "crusade", "trek", "sojourn", "wanderlust", "roaming", "traveling", "wandering", "drifting", "floating", "gliding", "soaring", "flying", "hovering", "levitating", "ascending", "descending", "climbing", "scaling", "mountaineering"]
-    word_3 = ["explorer", "adventurer", "traveler", "wanderer", "nomad", "pilgrim", "journeyman", "wayfarer", "roamer", "drifter", "globetrotter", "voyager", "pioneer", "trailblazer", "pathfinder", "navigator", "scout", "seeker", "quester", "expeditionist", "explorator", "discoverer", "investigator", "researcher", "scientist", "scholar", "academic", "intellectual", "thinker", "philosopher", "theorist", "visionary", "futurist", "innovator", "inventor", "creator", "artist", "designer", "engineer"]
+    word_1 = [
+        # celestial / cosmic bodies
+        "space", "moon", "star", "planet", "galaxy", "universe", "comet",
+        "asteroid", "meteor", "meteorite", "constellation", "asteroid-belt",
+        "solar-system", "exoplanet", "gas-giant", "dwarf-planet", "satellite",
+        # exotic objects / phenomena
+        "black-hole", "wormhole", "nebula", "quasar", "pulsar", "supernova",
+        "dark-matter", "dark-energy", "light-year", "singularity",
+        "event-horizon", "multiverse", "parallel-universe", "cosmos", "void",
+        "interstellar", "deep-space", "space-time", "dimension",
+        # physics / science
+        "gravity", "orbit", "time", "energy", "matter", "radiation", "photon",
+        "neutrino", "atom", "molecule", "particle", "quark", "electron",
+        "proton", "neutron", "plasma", "vacuum", "entropy", "relativity",
+        "thermodynamics", "cosmology", "astrophysics", "astrobiology",
+        # astronomy / observation
+        "telescope", "observatory", "eclipse", "equinox", "solstice", "aurora",
+        "meteor-shower", "solar-wind", "cosmic-ray", "gamma-ray",
+        # life / intelligence / tech
+        "extraterrestrial", "alien", "lifeform", "intelligence", "civilization",
+        "technology", "robotics", "artificial-intelligence", "machine-learning",
+        "neural-network", "quantum-computing",
+        # travel / vessels
+        "astronaut", "cosmonaut", "taikonaut", "spaceship", "starship",
+        "spacecraft", "warp-drive", "hyperdrive", "probe", "rover", "lander",
+        "module", "space-station", "moonbase", "colony", "outpost",
+        # abstract / boundary
+        "frontier", "horizon", "zenith", "nadir",
+    ]
+
+    word_2 = [
+        # exploration missions
+        "exploration", "discovery", "adventure", "journey", "mission",
+        "expedition", "voyage", "quest", "odyssey", "pilgrimage", "safari",
+        "crusade", "trek", "sojourn", "wanderlust", "traverse", "crossing",
+        "navigation", "pioneering", "pathfinding", "scouting", "seeking",
+        "searching", "probing", "surveying", "mapping", "charting", "survey",
+        "scan", "sweep", "patrol", "pursuit", "chase", "race", "dash", "sprint",
+        "marathon", "relay",
+        # motion / movement
+        "roaming", "traveling", "wandering", "drifting", "floating", "gliding",
+        "soaring", "flying", "hovering", "levitating", "ascending", "descending",
+        "climbing", "scaling", "mountaineering", "launch", "ascent", "descent",
+        "landing", "docking", "orbit", "flyby", "encounter", "rendezvous",
+        # operations
+        "contact", "signal", "transmission", "broadcast", "uplink", "downlink",
+        "telemetry", "observation", "analysis", "study", "research",
+        "experiment", "investigation", "sampling", "collection", "gathering",
+        "assembly", "synthesis", "formation", "creation", "construction",
+        "fabrication", "operation",
+    ]
+
+    word_3 = [
+        # explorers / travelers
+        "explorer", "adventurer", "traveler", "wanderer", "nomad", "pilgrim",
+        "journeyman", "wayfarer", "roamer", "drifter", "globetrotter", "voyager",
+        "pioneer", "trailblazer", "pathfinder", "navigator", "scout", "seeker",
+        "quester", "expeditionist", "explorator", "discoverer",
+        # researchers / intellectuals
+        "investigator", "researcher", "scientist", "scholar", "academic",
+        "intellectual", "thinker", "philosopher", "theorist", "visionary",
+        "futurist", "innovator", "inventor", "analyst", "observer",
+        "astronomer", "astrophysicist", "cosmologist", "physicist",
+        "mathematician", "chemist", "biologist", "geologist", "meteorologist",
+        # makers / doers
+        "creator", "artist", "designer", "engineer", "architect", "builder",
+        "maker", "craftsman", "technician", "specialist", "expert",
+        "programmer", "developer", "coder", "mechanic", "technologist",
+        # space crew
+        "astronaut", "cosmonaut", "taikonaut", "pilot", "captain", "commander",
+        "officer", "crew", "operator",
+        # leaders / mythic
+        "strategist", "planner", "coordinator", "director", "manager", "leader",
+        "chief", "master", "guru", "sage", "oracle", "prophet", "herald",
+        "guardian", "sentinel", "watchman", "knight", "warrior", "champion",
+        "hero", "legend", "myth",
+    ]
     
     # generate a random number of 4 digits
     
-    suffix = random.randint(1000, 9999)
+    suffix = random.randint(10000, 99999)
     
     # generate a random word with the first, secon, and third word and the suffix
     branch_name = f"{random.choice(word_1)}-{random.choice(word_2)}-{random.choice(word_3)}-{suffix}"
